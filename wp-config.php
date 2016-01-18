@@ -20,8 +20,8 @@
 
 $vcap = getenv("VCAP_SERVICES");
 $data = json_decode($vcap, true);
-$creds = $data['cleardb'][0]['credentials'];
-define('DB_NAME', $creds['name']);
+$creds = $data['user-provided'][0]['credentials'];
+define('DB_NAME', $creds['dbname']);
 
 /** MySQL database username */
 define('DB_USER', $creds['username']);
@@ -30,7 +30,7 @@ define('DB_USER', $creds['username']);
 define('DB_PASSWORD', $creds['password']);
 
 /** MySQL hostname */
-define('DB_HOST', $creds['hostname']);
+define('DB_HOST', $creds['host']);
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
